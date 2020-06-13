@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 public class MutualFundController {
@@ -27,5 +28,18 @@ public class MutualFundController {
     public String healthCheck() {
         logger.info("invoked endpoint = {} , id = {}", "/mutualfund/healthcheck");
         return "Server is up and runnning";
+    }
+
+    @RequestMapping("/mutualfund/loop")
+    public void loopCall() throws InterruptedException {
+        Random random = new Random();
+        logger.info("invoked endpoint = {} , id = {}", "/mutualfund/loop");
+        int i = 1000;
+        while (i > 0) {
+            int sleepSec = random.nextInt(10);
+            Thread.sleep(sleepSec * 1000);
+            Map<String, Object> response = this.mutualFundData("120503");
+            logger.info("Data Fetched after {} secs", sleepSec);
+        }
     }
 }
