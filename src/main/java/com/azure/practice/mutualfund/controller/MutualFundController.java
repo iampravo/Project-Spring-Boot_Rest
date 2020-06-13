@@ -21,4 +21,11 @@ public class MutualFundController {
         logger.info("invoked endpoint = {} , id = {}", "/mutualfund", id);
         return mutualFundService.getData(id);
     }
+
+
+    @RequestMapping("/mutualfund/healthcheck")
+    public String healthCheck(@PathVariable String id) {
+        logger.info("invoked endpoint = {} , id = {}", "/mutualfund/healthcheck", id);
+        return "Server is up and runnning";
+    }
 }
