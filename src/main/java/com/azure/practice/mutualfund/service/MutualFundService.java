@@ -11,6 +11,7 @@ public class MutualFundService {
     @Autowired
     private MutualFundDao mutualFundDao;
     public Map<String, Object> getData(String id) {
+
         return mutualFundDao.getData(id);
     }
 }

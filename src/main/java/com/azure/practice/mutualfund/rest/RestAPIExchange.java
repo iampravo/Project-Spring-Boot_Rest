@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +35,8 @@ public class RestAPIExchange {
 
     public Map<String, Object> getExchange(String id) throws Exception {
         String url = "https://api.mfapi.in/mf/" + id;
+        logger.info("Fetching Mutual Funds Data URL = {}", url);
+
         try {
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
